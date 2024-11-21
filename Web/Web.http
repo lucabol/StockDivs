@@ -1,0 +1,11 @@
+@Web_HostAddress = http://localhost:5124
+
+GET {{Web_HostAddress}}
+Accept: application/html
+
+###
+
+GET {{Web_HostAddress}}
+Accept: application/html
+
+###

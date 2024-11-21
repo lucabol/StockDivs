@@ -1,0 +1,10 @@
+# without this file it doesn't compile because it copies the obj directories
+# https://stackoverflow.com/questions/60835030/where-does-the-unable-to-find-fallback-package-folder-nuget-error-come-from-w
+# directories
+**/bin/
+**/obj/
+**/out/
+
+# files
+Dockerfile*
+**/*.md

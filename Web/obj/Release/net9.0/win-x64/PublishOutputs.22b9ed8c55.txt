@@ -1,0 +1,4 @@
+C:\Users\lucabol\dev\Portfolio\Web\bin\Release\net9.0\win-x64\publish\appsettings.Development.json
+C:\Users\lucabol\dev\Portfolio\Web\bin\Release\net9.0\win-x64\publish\appsettings.json
+C:\Users\lucabol\dev\Portfolio\Web\bin\Release\net9.0\win-x64\publish\Web.exe
+C:\Users\lucabol\dev\Portfolio\Web\bin\Release\net9.0\win-x64\publish\aspnetcorev2_inprocess.dll
