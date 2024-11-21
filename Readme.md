@@ -1,0 +1,1 @@
+# Experimenting with docker compose wrt Azure Container Apps
