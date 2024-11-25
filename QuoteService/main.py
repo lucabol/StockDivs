@@ -51,6 +51,10 @@ class StocksRequest(BaseModel):
         }
     }
 
+@app.get("/health")
+async def read_health():
+    return "Ok"
+
 @app.get("/api/version")
 async def read_root():
     yfinanceVersion = yf.__version__

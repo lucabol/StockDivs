@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: Web
+    ports:
+      - "80:80"
+    environment:
+      - QUOTES_ENDPOINT=http://stocks
+      - TICKERS=MSFT AAPL GOOGL RKT.L
+    depends_on:
+      - stocks
+  stocks:
+    build:
+      context: QuoteService
+    expose:
+      - "80"
+    deploy:
+      replicas: 3

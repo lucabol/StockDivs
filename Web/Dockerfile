@@ -1,9 +1,4 @@
 # Modified from https://www.thinktecture.com/en/net/native-aot-with-asp-net-core-overview/
-FROM alpine:3.20 AS prepare
-WORKDIR /app
-RUN adduser -u 1000 --disabled-password --gecos "" appuser && chown -R appuser /app
-USER appuser
-
 FROM mcr.microsoft.com/dotnet/sdk:9.0-alpine3.20 AS build
 RUN apk update && apk upgrade
 RUN apk add --no-cache clang build-base zlib-dev
@@ -19,10 +14,19 @@ RUN dotnet publish \
     --no-restore
 
 
-FROM prepare AS final
-COPY --chown=appuser --from=build /app/Web ./Web
+FROM alpine:3.20 AS final
+WORKDIR /app
 
-ENV ASPNETCORE_URLS=http://+:5001
-EXPOSE 5001
+COPY --from=build /app/Web ./Web
+COPY --from=build /code/favicon.ico ./wwwroot/favicon.ico
+
+run apk --no-cache add curl
+HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
+    CMD curl --silent --fail http://localhost:80/health || exit 1
+
+# Who knows if this is needed?
+ENV ASPNETCORE_URLS=http://+:80
+
+EXPOSE 80
 
 ENTRYPOINT ["./Web"]
