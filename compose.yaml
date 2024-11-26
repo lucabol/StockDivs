@@ -14,5 +14,3 @@ services:
       context: QuoteService
     expose:
       - "80"
-    deploy:
-      replicas: 3

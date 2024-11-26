@@ -12,4 +12,4 @@ az containerapp env create --name $env --resource-group $rgname --location $loc 
 az containerapp compose create --resource-group $rgname --location $loc --environment $env -f compose.yaml
 
 $endpoint=az containerapp show --name web --resource-group $rgname --query "properties.configuration.ingress.fqdn" -o tsv
-write-host "Endpoint: http://$endpoint" -ForegroundColor Green
+write-host "Endpoint: http://$endpoint" -ForegroundColor Blue
