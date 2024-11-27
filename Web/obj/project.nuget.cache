@@ -1,11 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "Sp7XM/2A+Fw=",
+  "dgSpecHash": "fky5czgcI9A=",
   "success": true,
   "projectFilePath": "C:\\Users\\lucabol\\dev\\StockDivs\\Web\\Web.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\lucabol\\.nuget\\packages\\microsoft.aspnetcore.outputcaching.stackexchangeredis\\9.0.0\\microsoft.aspnetcore.outputcaching.stackexchangeredis.9.0.0.nupkg.sha512",
     "C:\\Users\\lucabol\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\9.0.0-rc.2.24473.5\\microsoft.dotnet.ilcompiler.9.0.0-rc.2.24473.5.nupkg.sha512",
+    "C:\\Users\\lucabol\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0\\microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\lucabol\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.0\\microsoft.extensions.logging.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\lucabol\\.nuget\\packages\\microsoft.extensions.options\\9.0.0\\microsoft.extensions.options.9.0.0.nupkg.sha512",
+    "C:\\Users\\lucabol\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.0\\microsoft.extensions.primitives.9.0.0.nupkg.sha512",
     "C:\\Users\\lucabol\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.0-rc.2.24473.5\\microsoft.net.illink.tasks.9.0.0-rc.2.24473.5.nupkg.sha512",
+    "C:\\Users\\lucabol\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\lucabol\\.nuget\\packages\\stackexchange.redis\\2.7.27\\stackexchange.redis.2.7.27.nupkg.sha512",
+    "C:\\Users\\lucabol\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\lucabol\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\9.0.0-rc.2.24473.5\\runtime.win-x64.microsoft.dotnet.ilcompiler.9.0.0-rc.2.24473.5.nupkg.sha512"
   ],
   "logs": []

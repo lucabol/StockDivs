@@ -7,10 +7,18 @@ services:
     environment:
       - QUOTES_ENDPOINT=http://stocks
       - TICKERS=MSFT AAPL GOOGL RKT.L
+      - REDIS=redis:8081
     depends_on:
       - stocks
+      - redis
   stocks:
     build:
       context: QuoteService
     expose:
       - "80"
+  redis:
+    build:
+      context: .
+      dockerfile: Dockerfile.redis
+    expose:
+      - "8081"

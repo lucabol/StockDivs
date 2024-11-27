@@ -2,19 +2,32 @@ using System.Net.Mime;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
-var builder = WebApplication.CreateSlimBuilder(args);
-builder.Services.AddHttpClient();
-var app = builder.Build();
-app.UseStaticFiles();
+using Microsoft.AspNetCore.OutputCaching;
 
 var quotesEndpoint = Environment.GetEnvironmentVariable("QUOTES_ENDPOINT")
     ?? throw new Exception("QUOTES_ENDPOINT environment variable is not set");
-
 var tickers = Environment.GetEnvironmentVariable("TICKERS")
     ?? throw new Exception("TICKERS environment variable is not set");
-    
-app.MapGet("/", async (HttpClient client) =>
+var redis = Environment.GetEnvironmentVariable("REDIS")
+    ?? throw new Exception("REDIS environment variable is not set");
+
+var builder = WebApplication.CreateSlimBuilder(args);
+builder.Services.AddHttpClient();
+builder.Services.AddStackExchangeRedisOutputCache(
+    options => options.Configuration = redis
+);
+builder.Services.AddOutputCache(options =>
+{
+    options.AddBasePolicy(builder =>
+        builder.Expire(TimeSpan.FromSeconds(10)));
+});
+
+var app = builder.Build();
+
+app.UseStaticFiles();
+app.UseOutputCache();
+
+app.MapGet("/", [OutputCache] async (HttpClient client) =>
 {
     var ticks = tickers.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
@@ -22,7 +35,6 @@ app.MapGet("/", async (HttpClient client) =>
     var htmlTable = GenerateHtmlTable(tickersPrices);
 
     return new HtmlResult(html(htmlTable));
-
 });
 
 app.MapGet("/health", () => "OK");

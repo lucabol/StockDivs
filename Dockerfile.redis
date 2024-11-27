@@ -1,0 +1,3 @@
+FROM redis:alpine
+EXPOSE 8081
+CMD ["redis-server", "--port", "8081"]
