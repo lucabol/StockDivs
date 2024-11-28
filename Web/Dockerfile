@@ -20,7 +20,7 @@ WORKDIR /app
 COPY --from=build /app/Web ./Web
 COPY --from=build /code/favicon.ico ./wwwroot/favicon.ico
 
-run apk --no-cache add curl
+RUN apk --no-cache add curl
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
     CMD curl --silent --fail http://localhost:80/health || exit 1
 

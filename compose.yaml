@@ -11,6 +11,8 @@ services:
     depends_on:
       - stocks
       - redis
+    x-azure:
+      replicas: [2,6]
   stocks:
     build:
       context: QuoteService
@@ -22,3 +24,5 @@ services:
       dockerfile: Dockerfile.redis
     expose:
       - "8081"
+    x-azure:
+      ingress-type: tcp
