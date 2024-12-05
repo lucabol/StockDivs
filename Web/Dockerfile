@@ -4,7 +4,6 @@ RUN apk update && apk upgrade
 RUN apk add --no-cache clang build-base zlib-dev
 WORKDIR /code
 COPY ./Web.csproj .
-COPY --from=servicedefaults . ../ServiceDefaults
 ARG RUNTIME_ID=linux-musl-x64
 RUN dotnet restore -r $RUNTIME_ID
 COPY . .
@@ -12,6 +11,7 @@ RUN dotnet publish \
     -c Release \
     -r $RUNTIME_ID \
     -o /app \
+    -p:DefineConstants="DOCKER_BUILD" \
     --no-restore
 
 

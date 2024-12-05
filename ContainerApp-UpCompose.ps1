@@ -4,6 +4,16 @@ param(
     [string]$Composefile = "compose.yaml"
 )
 
+$moduleName = "powershell-yaml"
+
+# Check if the module is installed
+if (Get-Module -ListAvailable -Name $moduleName) {
+    Write-Host "$moduleName is already installed."
+} else {
+    Write-Host "$moduleName is not installed. Installing..."
+    Install-Module -Name $moduleName -Scope CurrentUser -Force
+}
+
 $rgname="rg-$EnvironmentName"
 $loc=$Location
 $env="env-$EnvironmentName"

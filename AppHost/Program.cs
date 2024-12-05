@@ -1,7 +1,7 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
 var quotes = builder.AddDockerfile("quotes", "../QuoteService")
-                    .WithHttpEndpoint(port: 8082, targetPort:8082);
+                    .WithHttpEndpoint(port: 80, targetPort:80);
 var redis = builder.AddDockerfile("redis", "../", "Dockerfile.redis")
                     .WithEndpoint(port: 6379, targetPort: 6379, scheme:"tcp", isExternal:false, name:"redis");
 

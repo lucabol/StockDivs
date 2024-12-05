@@ -14,7 +14,9 @@ var redis = Environment.GetEnvironmentVariable("REDIS")
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
+#if !DOCKER_BUILD
 builder.AddServiceDefaults();
+#endif
 
 builder.Services.AddHttpClient();
 builder.Services.AddStackExchangeRedisOutputCache(

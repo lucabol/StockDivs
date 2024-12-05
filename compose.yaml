@@ -7,7 +7,7 @@ services:
     ports:
       - "80:80"
     environment:
-      - QUOTES_ENDPOINT=http://stocks:8082
+      - QUOTES_ENDPOINT=http://stocks
       - TICKERS=MSFT AAPL GOOGL RKT.L
       - REDIS=redis
     depends_on:
@@ -19,7 +19,7 @@ services:
     build:
       context: QuoteService
     expose:
-      - "8082"
+      - "80"
   redis:
     build:
       context: .
