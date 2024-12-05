@@ -2,12 +2,14 @@ services:
   web:
     build:
       context: Web
+      additional_contexts:
+        servicedefaults: ServiceDefaults
     ports:
       - "80:80"
     environment:
-      - QUOTES_ENDPOINT=http://stocks
+      - QUOTES_ENDPOINT=http://stocks:8082
       - TICKERS=MSFT AAPL GOOGL RKT.L
-      - REDIS=redis:8081
+      - REDIS=redis
     depends_on:
       - stocks
       - redis
@@ -17,12 +19,12 @@ services:
     build:
       context: QuoteService
     expose:
-      - "80"
+      - "8082"
   redis:
     build:
       context: .
       dockerfile: Dockerfile.redis
     expose:
-      - "8081"
+      - "6379"
     x-azure:
       ingress-type: tcp
