@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.OutputCaching;
+using StackExchange.Redis;
 
 var quotesEndpoint = Environment.GetEnvironmentVariable("QUOTES_ENDPOINT")
     ?? throw new Exception("QUOTES_ENDPOINT environment variable is not set");
@@ -12,9 +13,20 @@ var redis = Environment.GetEnvironmentVariable("REDIS")
     ?? throw new Exception("REDIS environment variable is not set");
 
 var builder = WebApplication.CreateSlimBuilder(args);
+
+builder.AddServiceDefaults();
+
 builder.Services.AddHttpClient();
 builder.Services.AddStackExchangeRedisOutputCache(
-    options => options.Configuration = redis
+    //options => options.Configuration = redis
+    options => options.ConfigurationOptions = new ConfigurationOptions
+    {
+        EndPoints = { redis, "6379" },
+        ConnectRetry = 2,
+        AbortOnConnectFail = false,
+        ConnectTimeout = 500,
+        SyncTimeout = 500,
+     }
 );
 builder.Services.AddOutputCache(options =>
 {

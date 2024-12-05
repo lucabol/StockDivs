@@ -10,11 +10,11 @@ RUN pip install --upgrade --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 80
+EXPOSE 8082
 
 RUN apk add --no-cache curl
 
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
-    CMD curl --silent --fail http://localhost:80/health || exit 1
+    CMD curl --silent --fail http://localhost:8082/health || exit 1
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8082"]
