@@ -123,22 +123,30 @@ string html(string tableBody) => @$"<!doctype html>
 
 string css() => @"
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Corporate font */
     font-size: large;
 }
 table {
+    width: 100%;
     border-collapse: collapse;
-    border: 1px solid #ccc;
-    font-family: monospace;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Corporate font */
+    font-size: 16px; /* Increase font size */
+    color: #333; /* Corporate text color */
 }
-th, td {
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-    padding: 8px;
-    border: 1px solid #ccc;
+table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light grey for alternating rows */
 }
-table tr td:first-child, table tr th:first-child {
-    text-align: left;
+table th, table td {
+    padding: 12px; /* Add padding to table cells */
+    text-align: center; /* Center-align table headers */
+    border: 1px solid #ddd; /* Light grey border */
+}
+table th {
+    background-color: #004080; /* Corporate blue background */
+    color: white; /* White text color */
+}
+table tr:hover {
+    background-color: #e6f2ff; /* Light blue hover effect */
 }";
 
 [JsonSerializable(typeof(Dictionary<string, string[]>))]
