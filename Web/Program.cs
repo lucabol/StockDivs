@@ -129,7 +129,7 @@ body {
 table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Arial', sans-serif; /* Modern font */
+    font-family: 'Aial', sans-serif; /* Modern font */
     font-size: 16px; /* Increase font size */
 }
 table tr:nth-child(even) {
