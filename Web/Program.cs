@@ -127,18 +127,24 @@ body {
     font-size: large;
 }
 table {
+    width: 100%;
     border-collapse: collapse;
-    border: 1px solid #ccc;
-    font-family: monospace;
+    font-family: 'Arial', sans-serif; /* Modern font */
+    font-size: 16px; /* Increase font size */
 }
-th, td {
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-    padding: 8px;
-    border: 1px solid #ccc;
+table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternating row colors */
 }
-table tr td:first-child, table tr th:first-child {
-    text-align: left;
+table th, table td {
+    padding: 12px; /* Add padding to table cells */
+    text-align: center; /* Center-align table headers */
+}
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+table tr:hover {
+    background-color: #ddd; /* Hover effect */
 }";
 
 [JsonSerializable(typeof(Dictionary<string, string[]>))]
